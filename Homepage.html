@@ -1,8 +1,55 @@
-<html>
-  <head> </head>
-  <body>
-    <h1>This is P5 group</h1>
-    <p>hello, i am ming xuan</p>
-    <p>20</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troll Code Visualization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Troll Code Visualization</h1>
+    <p>This example demonstrates inefficient code by calculating the factorial of a number using an overly complex method.</p>
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <div id="output"></div>
+
+    <script>
+        let callCount = 0;
+
+        function calculateFactorial() {
+            callCount = 0;
+            const number = 5;  // Change this value to test different inputs
+            const result = trollFactorial(number);
+            document.getElementById('output').innerHTML = `Factorial of ${number} is ${result}.<br>Recursive function called ${callCount} times.`;
+        }
+
+        function trollFactorial(n) {
+            if (n == 0) {
+                return 1;
+            }
+            let result = 1;
+            for (let i = 1; i <= n; i++) {
+                result *= recurseMultiply(i, result);
+            }
+            return result;
+        }
+
+        function recurseMultiply(a, b) {
+            callCount++;
+            if (b == 1) {
+                return a;
+            }
+            return a + recurseMultiply(a, b - 1);
+        }
+    </script>
+</body>
 </html>
